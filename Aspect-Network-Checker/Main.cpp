@@ -10,9 +10,7 @@
 const int max_thread_count = 1000;
 BS::thread_pool pool(max_thread_count); // Adjust the pool size as needed
 
-std::string const host = "nodec.mediathektv.com";
-std::string const port = "443";
-std::string const target = "/";
+std::string const host = "https://nodec.mediathektv.com";
 int version = 11;
 
 const std::vector<std::string> proxies = {};
@@ -28,7 +26,7 @@ void curl_test()
 	{
 		curl_easy_setopt(curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_2_0);
 		curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
-		curl_easy_setopt(curl, CURLOPT_URL, std::string("https://" + host).c_str());
+		curl_easy_setopt(curl, CURLOPT_URL, host);
 
 		while (true)
 		{
